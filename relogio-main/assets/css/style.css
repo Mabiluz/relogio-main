@@ -79,16 +79,105 @@
   height: 1.5rem;
 }
 
-/* Animação de pulsação */
-@keyframes pulse {
-  0%, 100% {
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0D1B2A;
+  /* Fundo azul escuro */
+}
+
+.outer-clock {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+  background-color: #1B263B;
+  border-radius: 2rem;
+}
+.outer-clock box {
+  box-shadow: inset 0px 0px 10px #1C5D99, 0px 0px 20px #1C5D99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loader {
+  width: 7em;
+  height: 5em;
+  position: relative;
+  animation: beat 1s infinite;
+}
+
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  border-radius: 5em 5em 0 0;
+  animation: coldblue 1s infinite;
+}
+
+.loader::before {
+  left: 50px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.loader::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes beat {
+  0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
-/* Aplica a animação ao ícone do coração */
-.icon-set svg.heart-icon {
-  animation: pulse 1s infinite ease-in-out;
+@keyframes coldblue {
+  0%, 100% {
+    background-color: rgb(174, 12, 12);
+  }
+  50% {
+    background-color: rgb(198, 23, 23);
+  }
+}
+.loading svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.loading svg polyline#back {
+  fill: none;
+  stroke: rgba(255, 77, 80, 0.2);
+}
+
+.loading svg polyline#front {
+  fill: none;
+  stroke: #ff4d4f;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }/*# sourceMappingURL=style.css.map */

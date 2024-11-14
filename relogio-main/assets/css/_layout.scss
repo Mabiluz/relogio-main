@@ -77,18 +77,3 @@
     width: 1.5rem;
     height: 1.5rem;
 }
-/* Animação de pulsação */
-@keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-  }
-  
-  /* Aplica a animação ao ícone do coração */
-  .icon-set svg.heart-icon {
-    animation: pulse 1s infinite ease-in-out;
-  }
-  
