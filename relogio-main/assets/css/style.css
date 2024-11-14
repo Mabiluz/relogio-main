@@ -79,61 +79,46 @@
   height: 1.5rem;
 }
 
+/* Container principal para centralizar o conteúdo */
 .clock-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center; /* Centraliza o conteúdo na vertical */
+  align-items: center; /* Centraliza o conteúdo na horizontal */
   height: 100vh;
-  background-color: #0D1B2A;
-  /* Fundo azul escuro */
+  background-color: #0D1B2A; /* Fundo azul escuro */
 }
 
+/* Estilo do relógio */
 .outer-clock {
   position: relative;
   width: 15rem;
   height: 15rem;
   background-color: #1B263B;
   border-radius: 2rem;
-}
-.outer-clock box {
   box-shadow: inset 0px 0px 10px #1C5D99, 0px 0px 20px #1C5D99;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
+/* Ajustando o relógio */
+.inner-clock .clock-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+/* Loader (coração) */
 .loader {
-  width: 7em;
-  height: 5em;
   position: relative;
+  margin-top: 20px; /* Espaço entre o relógio e o coração */
   animation: beat 1s infinite;
 }
 
-.loader::before,
-.loader::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 50px;
-  height: 80px;
-  border-radius: 5em 5em 0 0;
-  animation: coldblue 1s infinite;
-}
-
-.loader::before {
-  left: 50px;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-
-.loader::after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
-
+/* Animações */
 @keyframes beat {
   0% {
     transform: scale(1);
@@ -147,12 +132,36 @@
 }
 @keyframes coldblue {
   0%, 100% {
-    background-color: rgb(174, 12, 12);
+    background-color: rgb(174, 12, 12); /* Cor inicial do coração */
   }
   50% {
-    background-color: rgb(198, 23, 23);
+    background-color: rgb(198, 23, 23); /* Cor final do coração */
   }
 }
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 32px;
+  border-radius: 5em 5em 0 0;
+  animation: coldblue 1s infinite;
+}
+
+.loader::before {
+  left: 20px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.loader::after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+/* Estilo da animação do "loading" (cor do coração) */
 .loading svg polyline {
   fill: none;
   stroke-width: 3;
@@ -180,4 +189,11 @@
   to {
     stroke-dashoffset: 0;
   }
+}
+/* Ajuste de posicionamento do coração (loader) dentro do relógio */
+.allheart {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o loader horizontalmente */
+  margin-top: 20px; /* Espaço entre o relógio e o coração */
 }/*# sourceMappingURL=style.css.map */
