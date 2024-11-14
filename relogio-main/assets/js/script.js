@@ -19,3 +19,20 @@ function updateClock() {
 // Atualiza o relógio imediatamente e depois a cada minuto
 updateClock();
 setInterval(updateClock, 60000);
+
+document.addEventListener("DOMContentLoaded", function () {
+    let button = document.getElementById("increaseButton");
+    let loader = document.querySelector(".loader");
+
+    // Frequência inicial da animação (1 segundo)
+    let beatDuration = 1;
+
+    // Função para aumentar a frequência (diminuir a duração)
+    button.addEventListener("click", function () {
+        if (beatDuration > 0.2) { // Impede que a duração seja menor que 0.2s
+            beatDuration -= 0.2; // Aumenta a frequência (diminui o tempo de batimento)
+            loader.style.animationDuration = `${beatDuration}s`; // Aplica a nova duração
+        }
+    });
+});
+
